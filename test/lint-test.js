@@ -47,5 +47,13 @@ buster.testCase('Lint', {
         });
         var result = linter.check("var a = 1, b = 2, c = a == b;");
         assert(result.ok);
+    },
+
+    "should not lint excluded files": function () {
+        var linter = lint.create({
+            excludes: [ "jquery" ]
+        });
+        var result = linter.check("var a = 1", "./lib/jquery.js");
+        assert(result.ok);
     }
 });
