@@ -1,5 +1,5 @@
 var buster = require("buster");
-var ext = require("../lib/buster-lint").extension;
+var ext = require("../lib/buster-lint");
 var resourceSet = require("buster-resources").resourceSet;
 var analyzer = require("buster-analyzer");
 
