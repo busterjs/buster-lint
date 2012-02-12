@@ -1,0 +1,23 @@
+{
+    "name": "buster-lint",
+    "version": "0.1.0",
+    "description": "",
+    "homepage": "http://busterjs.org/docs/buster-lint",
+    "author": {
+        "name": "Magnar Sveen",
+        "email": "magnars@gmail.com"
+    },
+    "main": "./lib/buster-lint",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/magnars/buster-lint.git"
+    },
+    "dependencies": {
+        "autolint": ">=1.0.2"
+    },
+    "devDependencies": {
+        "buster": "*",
+        "buster-analyzer": ">=0.1",
+        "buster-resources": ">=0.2"
+    }
+}
