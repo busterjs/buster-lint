@@ -1,5 +1,5 @@
 var buster = require("buster");
-var lint = require("../lib/buster-lint").lint;
+var lint = require("../lib/lint");
 
 buster.testCase('Lint', {
     setUp: function () {
