@@ -22,7 +22,7 @@ buster.testCase("Lint extension", {
         group.resolve().then(function (resourceSet) {
             resourceSet.serialize().then(done(function () {
                 assert.calledOnceWith(this.listeners.error,
-                                      "Lint in /buster.js");
+                                      "Lint in ./buster.js");
             }.bind(this)), function (err) {
                 buster.log(err.message, err.stack);
             });
