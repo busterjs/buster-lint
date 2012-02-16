@@ -3,6 +3,12 @@ var ext = require("../lib/buster-lint");
 var config = require("buster-configuration");
 var analyzer = require("buster-analyzer");
 
+function process(group, then, errBack) {
+    group.resolve().then(function (resourceSet) {
+        resourceSet.serialize().then(then, errBack);
+    }, errBack);
+}
+
 buster.testCase("Lint extension", {
     setUp: function () {
         this.config = config.create();
@@ -19,13 +25,24 @@ buster.testCase("Lint extension", {
 
         ext.create().beforeRun(group, this.analyzer);
 
-        group.resolve().then(function (resourceSet) {
-            resourceSet.serialize().then(done(function () {
-                assert.calledOnceWith(this.listeners.error,
-                                      "Lint in ./buster.js");
-            }.bind(this)), function (err) {
-                buster.log(err.message, err.stack);
-            });
-        }.bind(this));
+        process(group, done(function () {
+            assert.calledOnceWith(this.listeners.error,
+                                  "Lint in ./buster.js");
+        }.bind(this)), buster.log);
+    },
+
+    "does not lint non-javascript resources": function (done) {
+        var group = this.config.addGroup("Some tests", {
+            resources: [{ path: "/buster", content: "var a = 123" }],
+            libs: ["/buster"]
+        });
+
+        group.bundleFramework();
+        ext.create().beforeRun(group, this.analyzer);
+
+        process(group, done(function () {
+            refute.called(this.listeners.error);
+        }.bind(this)), buster.log);
+
     }
 });
