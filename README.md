@@ -41,7 +41,7 @@ the filename either by string or regexp.
     config["My tests"] = {
       extensions: [ require("buster-lint") ],
       "buster-lint": {
-        excludes: [ "jquery", "raphael" ]
+        excludes: [ "jquery", "raphael" ] // default is [ ]
       }
     };
 
