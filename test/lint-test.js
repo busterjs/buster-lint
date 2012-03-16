@@ -1,7 +1,7 @@
 var buster = require("buster");
 var lint = require("../lib/lint");
 
-buster.testCase('Lint', {
+buster.testCase("Lint", {
     setUp: function () {
         this.linter = lint.create({});
     },
@@ -18,27 +18,25 @@ buster.testCase('Lint', {
 
     "should give anonymous filename if not given": function () {
         var result = this.linter.check("var a = 123");
-        assert.equals(result.toString(),
-                      "[anonymous]:1:12 Expected ';' and instead saw '(end)'.");
+        assert.match(result.errors[0], {
+            file: "anonymous"
+        });
     },
 
     "should give multiple errors": function () {
         var result = this.linter.check("var a= 1;\nvar b= 2;", "myfile.js");
-        assert.equals(result.toString(),
-                      "myfile.js:1:6 Missing space between 'a' and '='.\n" +
-                      "myfile.js:2:6 Missing space between 'b' and '='.");
+        assert.equals(result.errors.length, 2);
+        assert.match(result.errors[0], { line: 1, col: 6, description: "Missing" });
+        assert.match(result.errors[1], { line: 2, col: 6, description: "Missing" });
     },
 
     "should handle more errors than maxErrors gracefully": function () {
         var result = this.linter.check("var a= 1;\nvar b= 2;", "myfile.js");
         result.errors.push(null);
-        assert.equals(result.toString(),
-                      "myfile.js:1:6 Missing space between 'a' and '='.\n" +
-                      "myfile.js:2:6 Missing space between 'b' and '='.\n" +
-                      "myfile.js has more errors, stopped parsing. " +
-                      "Good luck with that!\n" +
-                      "Include more errors in this report by setting " +
-                      "the maxerr option");
+        this.stub(this.linter.linter, "check").returns(result);
+        result = this.linter.check("var a= 1;\nvar b= 2;", "myfile.js");
+        assert.equals(result.errors.length, 3);
+        assert.match(result.errors[2], { description: "Good luck" });
     },
 
     "should use given configuration": function () {

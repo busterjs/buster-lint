@@ -1,7 +1,7 @@
 var buster = require("buster");
 var ext = require("../lib/buster-lint");
 var config = require("buster-configuration");
-var analyzer = require("buster-analyzer");
+var analyzer = require("buster-analyzer").analyzer;
 
 function process(group, then, errBack) {
     group.resolve().then(function (resourceSet) {
