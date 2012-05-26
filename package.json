@@ -13,7 +13,7 @@
         "url": "https://github.com/magnars/buster-lint.git"
     },
     "scripts": {
-        "test": "buster test"
+        "test": "./node_modules/buster/bin/buster-test"
     },
     "dependencies": {
         "autolint": ">=1.0.3"
