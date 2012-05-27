@@ -1,6 +1,6 @@
 # buster-lint
 
-![Build status](https://secure.travis-ci.org/busterjs/buster-lint.png?branch=master)
+[![Build status](https://secure.travis-ci.org/busterjs/buster-lint.png?branch=master)](http://travis-ci.org/busterjs/buster-lint/)
 
 An extension for [buster.js](http://busterjs.org) to make linting your
 JavaScript part of the test run.
