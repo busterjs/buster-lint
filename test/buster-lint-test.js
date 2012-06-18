@@ -43,6 +43,5 @@ buster.testCase("Lint extension", {
         process(group, done(function () {
             refute.called(this.listeners.error);
         }.bind(this)), buster.log);
-
     }
 });
