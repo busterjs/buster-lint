@@ -33,6 +33,21 @@ buster.testCase("Lint extension", {
         }.bind(this)), buster.log);
     },
 
+    "flags failed resources as uncacheable": function (done) {
+        var group = this.config.addGroup("Some tests", {
+            resources: [{ path: "/buster.js", content: "var a = 123" }],
+            sources: ["/buster.js"]
+        });
+
+        var extension = ext.create();
+        extension.configure(group);
+        extension.analyze(this.analyzer);
+
+        process(group, done(function (serialized) {
+            assert.isFalse(serialized.resources[0].cacheable);
+        }.bind(this)), buster.log);
+    },
+
     "does not lint non-javascript resources": function (done) {
         var group = this.config.addGroup("Some tests", {
             resources: [{ path: "/buster", content: "var a = 123" }],
