@@ -26,7 +26,6 @@ buster.testCase("Lint extension", {
         var extension = ext.create();
         extension.configure(group);
         extension.analyze(this.analyzer);
-        extension.beforeRun();
 
         process(group, done(function () {
             assert.calledOnce(this.listeners.error);
@@ -43,7 +42,6 @@ buster.testCase("Lint extension", {
         var extension = ext.create();
         extension.configure(group);
         extension.analyze(this.analyzer);
-        extension.beforeRun();
 
         process(group, done(function () {
             refute.called(this.listeners.error);
