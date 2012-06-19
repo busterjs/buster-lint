@@ -23,11 +23,13 @@ buster.testCase("Lint extension", {
             sources: ["/buster.js"]
         });
 
-        ext.create().beforeRun(group, this.analyzer);
+        var extension = ext.create();
+        extension.configure(group);
+        extension.analyze(this.analyzer);
 
         process(group, done(function () {
-            assert.calledOnceWith(this.listeners.error,
-                                  "Lint in ./buster.js");
+            assert.calledOnce(this.listeners.error);
+            assert.calledWith(this.listeners.error, "Lint in ./buster.js");
         }.bind(this)), buster.log);
     },
 
@@ -37,12 +39,12 @@ buster.testCase("Lint extension", {
             libs: ["/buster"]
         });
 
-        group.bundleFramework();
-        ext.create().beforeRun(group, this.analyzer);
+        var extension = ext.create();
+        extension.configure(group);
+        extension.analyze(this.analyzer);
 
         process(group, done(function () {
             refute.called(this.listeners.error);
         }.bind(this)), buster.log);
-
     }
 });
