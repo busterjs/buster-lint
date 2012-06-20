@@ -1,6 +1,6 @@
 {
     "name": "buster-lint",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "Buster-extension: jslint/jshint your files as part of test run.",
     "homepage": "http://busterjs.org/docs/buster-lint",
     "author": {
