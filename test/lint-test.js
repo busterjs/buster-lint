@@ -26,8 +26,16 @@ buster.testCase("Lint", {
     "should give multiple errors": function () {
         var result = this.linter.check("var a= 1;\nvar b= 2;", "myfile.js");
         assert.equals(result.errors.length, 2);
-        assert.match(result.errors[0], { line: 1, col: 6, description: "Missing" });
-        assert.match(result.errors[1], { line: 2, col: 6, description: "Missing" });
+        assert.match(result.errors[0], {
+            line: 1,
+            col: 6,
+            description: "Missing"
+        });
+        assert.match(result.errors[1], {
+            line: 2,
+            col: 6,
+            description: "Missing"
+        });
     },
 
     "should handle more errors than maxErrors gracefully": function () {
