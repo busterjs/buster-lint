@@ -7,10 +7,19 @@
         "name": "Magnar Sveen",
         "email": "magnars@gmail.com"
     },
+    "contributors": {
+        "name": "Christian Johansen",
+        "email": "christian@cjohansen.no",
+        "url": "http://cjohansen.no"
+    }, {
+        "name": "Stein Magnus Jodal",
+        "email": "stein.magnus@jodal.no",
+        "url": "http://jodal.no"
+    },
     "main": "./lib/buster-lint",
     "repository": {
         "type": "git",
-        "url": "https://github.com/magnars/buster-lint.git"
+        "url": "https://github.com/buster/buster-lint.git"
     },
     "scripts": {
         "test": "./node_modules/buster/bin/buster-test"
@@ -19,8 +28,8 @@
         "autolint": ">=1.0.3"
     },
     "devDependencies": {
-        "buster": "*",
-        "buster-analyzer": ">=0.3",
-        "buster-configuration": ">=0.5"
+        "buster": "0.6.2",
+        "buster-analyzer": ">=0.4",
+        "buster-configuration": ">=0.6"
     }
 }

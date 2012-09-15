@@ -1,7 +1,7 @@
 var buster = require("buster");
 var ext = require("../lib/buster-lint");
-var config = require("buster-configuration");
-var analyzer = require("buster-analyzer").analyzer;
+var bc = require("buster-configuration");
+var ba = require("buster-analyzer");
 
 function process(group, then, errBack) {
     group.resolve().then(function (resourceSet) {
@@ -11,8 +11,8 @@ function process(group, then, errBack) {
 
 buster.testCase("Lint extension", {
     setUp: function () {
-        this.config = config.create();
-        this.analyzer = analyzer.create();
+        this.config = bc.createConfiguration();
+        this.analyzer = ba.createAnalyzer();
         this.listeners = { error: this.spy() };
         this.analyzer.on("error", this.listeners.error);
     },
