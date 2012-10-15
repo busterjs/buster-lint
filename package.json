@@ -7,7 +7,7 @@
         "name": "Magnar Sveen",
         "email": "magnars@gmail.com"
     },
-    "contributors": {
+    "contributors": [{
         "name": "Christian Johansen",
         "email": "christian@cjohansen.no",
         "url": "http://cjohansen.no"
@@ -15,7 +15,7 @@
         "name": "Stein Magnus Jodal",
         "email": "stein.magnus@jodal.no",
         "url": "http://jodal.no"
-    },
+    }],
     "main": "./lib/buster-lint",
     "repository": {
         "type": "git",
