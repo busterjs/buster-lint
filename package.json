@@ -28,7 +28,7 @@
         "autolint": ">=1.0.3"
     },
     "devDependencies": {
-        "buster": "0.6.2",
+        "buster": "0.6.11",
         "buster-analyzer": ">=0.4",
         "buster-configuration": ">=0.6"
     }
