@@ -1,4 +1,6 @@
-var buster = require("buster");
+var buster = require("buster-node");
+var assert = buster.assert;
+var refute = buster.refute;
 var ext = require("../lib/buster-lint");
 var bc = require("buster-configuration");
 var ba = require("buster-analyzer");
